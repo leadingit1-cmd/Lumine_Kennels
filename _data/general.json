@@ -1,9 +1,11 @@
 {
   "business_name": "Luminé Kennels",
-  "tagline": "Where Every Puppy Finds Their Family",
-  "address": "10 Buitenkant St, Heidelberg - Wc, Heidelberg, 6665",
-  "phone": "0721692316",
+  "tagline": "South Africa's Finest Breeders",
+  "hero_title": "Where Every Puppy Finds Their Family",
+  "hero_desc": "At Luminé Kennels, we raise SACBR-registered dachshunds and KUSA-registered English bulldogs with love, care, and the highest breeding standards.",
+  "about": "Luminé Kennels was founded on a simple belief: every puppy deserves the best possible start in life. We pour immense care into each litter — from nutrition and socialisation to health screening and matching puppies with their perfect families.",
+  "address": "10 Buitenkant St, Heidelberg WC, 6665",
+  "phone": "",
   "email": "tippybarnardt@gmail.com",
-  "instagram": "lumine_kennels",
-  "about": "Luminé Kennels was founded on a simple belief: every puppy deserves the best possible start in life. We pour immense care into each litter — from nutrition and socialisation to health screening and matching puppies with their perfect families."
+  "instagram": "lumine_kennels"
 }

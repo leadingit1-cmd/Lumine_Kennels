@@ -1,0 +1,25 @@
+{
+  "list": [
+    {
+      "name": "Chocolate Litter",
+      "breed": "Dachshund — Longhair",
+      "description": "Beautiful chocolate & tan longhairs. Males and females available. 8 weeks old.",
+      "status": "Available Now",
+      "price": ""
+    },
+    {
+      "name": "Brindle Boy",
+      "breed": "English Bulldog",
+      "description": "Stunning brindle male, exceptional structure, very friendly and well-socialised.",
+      "status": "Reserved",
+      "price": ""
+    },
+    {
+      "name": "Winter Litter",
+      "breed": "Dachshund — Shorthair",
+      "description": "Dapple and solid shorthairs expected. Parents health-tested, excellent lineage.",
+      "status": "Coming Soon",
+      "price": ""
+    }
+  ]
+}
