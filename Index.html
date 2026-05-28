@@ -572,7 +572,7 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-text">
-    <p class="hero-eyebrow">South Africa's Finest Breeders</p>
+    <p class="hero-eyebrow" id="cms-tagline">South Africa's Finest Breeders</p>
     <h1 class="hero-title">Where Every<br><em>Puppy Finds</em><br>Their Family</h1>
     <p class="hero-desc">
       At Luminé Kennels, we raise SACBR-registered dachshunds and KUSA-registered English bulldogs with love, care, and the highest breeding standards.
@@ -646,7 +646,7 @@
     <p class="section-label reveal">About Us</p>
     <h2 class="section-title reveal">Passion, Care &amp;<br><em>Decades of Love</em></h2>
     <p class="section-body reveal">
-      Luminé Kennels was founded on a simple belief: every puppy deserves the best possible start in life. We pour immense care into each litter — from nutrition and socialisation to health screening and matching puppies with their perfect families.
+      <span id="cms-about">Luminé Kennels was founded on a simple belief: every puppy deserves the best possible start in life.</span>
     </p>
     <p class="section-body reveal" style="margin-top: 16px;">
       Our breeding dogs live as beloved family members, not kennelled animals. This makes all the difference in producing confident, well-adjusted puppies.
@@ -679,33 +679,7 @@
     <h2 class="section-title reveal">Find Your<br><em>Perfect Companion</em></h2>
     <p class="section-body reveal">Each puppy is raised with love, fully vaccinated, and ready to become part of your family. Contact us to enquire about any listing.</p>
     <div class="pups-grid reveal">
-      <div class="pup-card">
-        <div class="pup-photo">🐾</div>
-        <div class="pup-info">
-          <p class="pup-breed">Dachshund · Longhair</p>
-          <p class="pup-name">Chocolate Litter</p>
-          <p class="pup-desc">Beautiful chocolate &amp; tan longhairs. Males and females available. 8 weeks old.</p>
-          <span class="pup-tag tag-available">Available Now</span>
-        </div>
-      </div>
-      <div class="pup-card">
-        <div class="pup-photo">🐾</div>
-        <div class="pup-info">
-          <p class="pup-breed">English Bulldog</p>
-          <p class="pup-name">Brindle Boy</p>
-          <p class="pup-desc">Stunning brindle male, exceptional structure, very friendly and well-socialised.</p>
-          <span class="pup-tag tag-reserved">Reserved</span>
-        </div>
-      </div>
-      <div class="pup-card">
-        <div class="pup-photo">🐾</div>
-        <div class="pup-info">
-          <p class="pup-breed">Dachshund · Shorthair</p>
-          <p class="pup-name">Winter Litter</p>
-          <p class="pup-desc">Dapple and solid shorthairs expected. Parents health-tested, excellent lineage.</p>
-          <span class="pup-tag tag-upcoming">Coming Soon</span>
-        </div>
-      </div>
+      <div id="cms-puppies-grid"></div>
     </div>
     <div style="text-align:center; margin-top: 48px;">
       <a href="#contact" class="btn-primary" style="display:inline-block;">Enquire About a Puppy</a>
@@ -772,7 +746,7 @@
 <section class="instagram">
   <div class="container">
     <p class="section-label reveal">Follow Along</p>
-    <h2 class="section-title reveal">@lumine_kennels<br><em>on Instagram</em></h2>
+    <h2 class="section-title reveal">@<span id="cms-ig-handle">lumine_kennels</span><br><em>on Instagram</em></h2>
     <div class="instagram-grid reveal">
       <div class="ig-cell">🐾</div>
       <div class="ig-cell">🐕</div>
@@ -799,14 +773,14 @@
           <div class="contact-icon">📸</div>
           <div>
             <p class="contact-label">Instagram</p>
-            <p class="contact-value">@lumine_kennels</p>
+            <p class="contact-value" id="cms-instagram">@lumine_kennels</p>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">📍</div>
           <div>
             <p class="contact-label">Location</p>
-            <p class="contact-value">South Africa</p>
+            <p class="contact-value" id="cms-address">South Africa</p>
           </div>
         </div>
         <div class="contact-item">
@@ -862,7 +836,7 @@
 <footer>
   <div class="footer-inner">
     <a href="#" class="footer-logo">Lumin<em>é</em> Kennels</a>
-    <p class="footer-copy">© 2026 Luminé Kennels · SACBR &amp; KUSA Registered · South Africa</p>
+    <p class="footer-copy">© 2026 Luminé Kennels · SACBR &amp; KUSA Registered · <span id="cms-footer-address">South Africa</span></p>
     <div class="footer-links">
       <a href="#breeds">Breeds</a>
       <a href="#available">Available</a>
@@ -920,5 +894,98 @@
     });
   }
 </script>
+
+<script>
+  // Load CMS data from JSON files and update page
+  function loadCMSData() {
+    // Load general settings
+    fetch('/_data/general.json')
+      .then(r => r.json())
+      .then(data => {
+        if (data.tagline) {
+          const el = document.getElementById('cms-tagline');
+          if (el) el.textContent = data.tagline;
+        }
+        if (data.about) {
+          const el = document.getElementById('cms-about');
+          if (el) el.textContent = data.about;
+        }
+        if (data.address) {
+          document.querySelectorAll('#cms-address, #cms-footer-address').forEach(el => {
+            if (el) el.textContent = data.address;
+          });
+        }
+        if (data.instagram) {
+          const ig1 = document.getElementById('cms-instagram');
+          const ig2 = document.getElementById('cms-ig-handle');
+          const igLinks = document.querySelectorAll('a[href*="instagram.com/lumine_kennels"]');
+          if (ig1) ig1.textContent = '@' + data.instagram;
+          if (ig2) ig2.textContent = data.instagram;
+          igLinks.forEach(el => el.href = 'https://www.instagram.com/' + data.instagram + '/');
+        }
+        if (data.phone) {
+          const phoneEl = document.querySelector('.contact-value[data-type="phone"]');
+          if (phoneEl) phoneEl.textContent = data.phone;
+        }
+        if (data.email) {
+          const emailEl = document.getElementById('email');
+          // update form placeholder
+        }
+        if (data.business_name) {
+          document.title = data.business_name + ' — Dachshunds & English Bulldogs';
+        }
+      })
+      .catch(() => console.log('Using default content'));
+
+    // Load puppies
+    fetch('/_data/puppies.json')
+      .then(r => r.json())
+      .then(data => {
+        const grid = document.getElementById('cms-puppies-grid');
+        if (!grid || !data.list || !data.list.length) return;
+
+        const statusMap = {
+          'Available Now': 'tag-available',
+          'Reserved': 'tag-reserved',
+          'Coming Soon': 'tag-upcoming'
+        };
+
+        grid.innerHTML = data.list.map(pup => `
+          <div class="pup-card">
+            <div class="pup-photo">🐾</div>
+            <div class="pup-info">
+              <p class="pup-breed">${pup.breed || ''}</p>
+              <p class="pup-name">${pup.name || ''}</p>
+              <p class="pup-desc">${pup.description || ''}${pup.price ? '<br><strong style="color:var(--gold)">' + pup.price + '</strong>' : ''}</p>
+              <span class="pup-tag ${statusMap[pup.status] || 'tag-upcoming'}">${pup.status || 'Coming Soon'}</span>
+            </div>
+          </div>
+        `).join('');
+
+        // Re-apply stagger animation
+        grid.querySelectorAll('.pup-card').forEach((el, i) => {
+          el.style.transitionDelay = (i * 0.1) + 's';
+        });
+      })
+      .catch(() => {
+        // Fallback static puppies if JSON fails
+        const grid = document.getElementById('cms-puppies-grid');
+        if (grid) grid.innerHTML = `
+          <div class="pup-card">
+            <div class="pup-photo">🐾</div>
+            <div class="pup-info">
+              <p class="pup-breed">Dachshund · Longhair</p>
+              <p class="pup-name">Chocolate Litter</p>
+              <p class="pup-desc">Beautiful chocolate &amp; tan longhairs. Males and females available.</p>
+              <span class="pup-tag tag-available">Available Now</span>
+            </div>
+          </div>`;
+      });
+  }
+
+  // Run when page loads
+  document.addEventListener('DOMContentLoaded', loadCMSData);
+</script>
+
 </body>
 </html>
