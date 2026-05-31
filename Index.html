@@ -763,10 +763,6 @@
 <section style="background: var(--cream); padding: 80px 0;">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:48px;" class="reveal"><div><p class="section-label">Not Just Breeders</p><h2 class="section-title">We Also Support<br><em>Adoption & Rescue</em></h2><p class="section-body">We believe every dog deserves a loving home — whether from a breeder or a rescue. If you're open to giving a dog in need a second chance, here are some wonderful organisations near you in the Western Cape.</p></div><div style="border-radius:8px;overflow:hidden;aspect-ratio:4/3;"><img src="/images/Loki.jpeg" alt="Loki" style="width:100%;height:100%;object-fit:cover;"></div></div>
-    <h2 class="section-title reveal">We Also Support<br><em>Adoption & Rescue</em></h2>
-    <p class="section-body reveal" style="max-width: 660px;">
-      We believe every dog deserves a loving home — whether from a breeder or a rescue. If you're open to giving a dog in need a second chance, here are some wonderful organisations near you in the Western Cape.
-    </p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 48px;" class="reveal">
 
       <a href="https://www.facebook.com/CommunityAnimalRescueSociety/about/" target="_blank" class="rescue-card">
@@ -1132,7 +1128,11 @@
     // Puppies
     fetch('/_data/puppies.json').then(r => r.json()).then(d => {
       const grid = document.getElementById('cms-puppies-grid');
-      if (!grid || !d.list || !d.list.length) return;
+      if (!grid) return;
+      if (!d.list || !d.list.length) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;"><p style="font-family:var(--serif);font-size:24px;color:rgba(255,255,255,0.5);font-style:italic;">No puppies available right now.</p><p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:8px;font-family:var(--sans);">Follow us on Instagram to be notified when our next litter arrives.</p></div>';
+        return;
+      }
       const statusMap = { 'Available Now': 'tag-available', 'Reserved': 'tag-reserved', 'Coming Soon': 'tag-upcoming' };
       grid.innerHTML = d.list.map((p, i) => `
         <div class="pup-card" style="transition-delay:${i*0.1}s">
