@@ -1136,7 +1136,7 @@
       const statusMap = { 'Available Now': 'tag-available', 'Reserved': 'tag-reserved', 'Coming Soon': 'tag-upcoming' };
       grid.innerHTML = d.list.map((p, i) => `
         <div class="pup-card" style="transition-delay:${i*0.1}s">
-          <div class="pup-photo">🐾</div>
+          <div class="pup-photo">${p.image ? '<img src="' + p.image + '" alt="' + (p.name || 'Puppy') + '" loading="lazy">' : '🐾'}</div>
           <div class="pup-info">
             <p class="pup-breed">${p.breed || ''}</p>
             <p class="pup-name">${p.name || ''}</p>
