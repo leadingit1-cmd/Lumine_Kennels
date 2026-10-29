@@ -27,6 +27,13 @@
       "status": "Available Now",
       "name": "Rolo",
       "description": "Meet this beautiful boy.."
+    },
+    {
+      "image": "/images/rustic-bruno-dachshund-announcement.png",
+      "name": "Bruno",
+      "breed": "Dachshund — Shorthair",
+      "status": "Available Now",
+      "description": "Meet this handsome little guy..."
     }
   ]
 }
