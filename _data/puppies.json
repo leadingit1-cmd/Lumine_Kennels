@@ -13,6 +13,13 @@
       "breed": "Dachshund — Shorthair",
       "description": "Meet Honey",
       "status": "Available Now"
+    },
+    {
+      "image": "/images/meet-maverick_-rustic-dachshund-puppy-announcement.png",
+      "name": "Maverick",
+      "breed": "Dachshund — Shorthair",
+      "status": "Available Now",
+      "description": "Meet this handsome boy... "
     }
   ]
 }
