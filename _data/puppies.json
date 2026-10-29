@@ -6,6 +6,13 @@
       "breed": "Dachshund — Shorthair",
       "status": "Available Now",
       "description": "Her name is Dipstick — and she's here to check your heart."
+    },
+    {
+      "image": "/images/meet-honey_-a-rustic-puppy-announcement.png",
+      "name": "Honey",
+      "breed": "Dachshund — Shorthair",
+      "description": "Meet Honey",
+      "status": "Available Now"
     }
   ]
 }
