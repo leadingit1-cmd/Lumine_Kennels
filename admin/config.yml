@@ -65,6 +65,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Name / Litter Name", name: "name", widget: "string" }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Square photos work best. Keep under 500 KB." }
               - { label: "Breed", name: "breed", widget: "select", options: ["Dachshund — Shorthair", "Dachshund — Longhair", "English Bulldog"] }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Status", name: "status", widget: "select", options: ["Available Now", "Reserved", "Coming Soon"] }
