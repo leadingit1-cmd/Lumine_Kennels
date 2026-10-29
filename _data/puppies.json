@@ -20,6 +20,13 @@
       "breed": "Dachshund — Shorthair",
       "status": "Available Now",
       "description": "Meet this handsome boy... "
+    },
+    {
+      "image": "/images/meet-rolo_-cozy-dachshund-announcement.png",
+      "breed": "Dachshund — Shorthair",
+      "status": "Available Now",
+      "name": "Rolo",
+      "description": "Meet this beautiful boy.."
     }
   ]
 }
