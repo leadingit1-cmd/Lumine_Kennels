@@ -385,6 +385,91 @@
   .tag-reserved { background: rgba(212, 168, 87, 0.2); color: var(--gold); }
   .tag-upcoming { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
 
+  /* Puppy cards flow straight into the grid */
+  #cms-puppies-grid { display: contents; }
+
+  /* ── UPCOMING PAIRINGS ── */
+  .upcoming { background: var(--cream); }
+  .pairs-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 32px; margin-top: 56px;
+  }
+  .pair-card {
+    background: var(--warm-white);
+    border: 0.5px solid rgba(196, 154, 108, 0.35);
+    border-radius: 4px; overflow: hidden;
+  }
+  .pair-photos { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 2px; background: var(--warm-white); }
+  .pair-parent {
+    position: relative; aspect-ratio: 4 / 5; margin: 0;
+    background: var(--blush); overflow: hidden;
+    display: flex; align-items: center; justify-content: center; font-size: 44px;
+  }
+  .pair-parent img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pair-parent figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 36px 16px 14px;
+    background: linear-gradient(to top, rgba(59, 36, 20, 0.88), rgba(59, 36, 20, 0));
+    color: var(--warm-white);
+    font-family: var(--serif); font-size: 21px; line-height: 1.2;
+  }
+  .pair-parent figcaption span {
+    display: block; margin-bottom: 3px;
+    font-family: var(--sans); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--blush);
+  }
+  .pair-x {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--warm-white); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 24px; z-index: 2;
+  }
+  .pair-info { padding: 22px 26px 28px; }
+  .pair-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 12px; margin-bottom: 8px; }
+  .pair-breed {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--brown-mid); font-family: var(--sans); font-weight: 500;
+  }
+  .pair-tag {
+    display: inline-block; flex-shrink: 0;
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 2px;
+    font-family: var(--sans); font-weight: 500;
+  }
+  .pair-tag.t-planned { background: var(--blush); color: var(--brown-mid); }
+  .pair-tag.t-expecting { background: rgba(212, 168, 87, 0.22); color: #7a5a1a; }
+  .pair-tag.t-open { background: rgba(138, 158, 137, 0.25); color: #3f5a3e; }
+  .pair-names { font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--brown-deep); margin-bottom: 4px; }
+  .pair-expected { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--brown-mid); margin-bottom: 12px; }
+  .pair-desc { font-size: 13px; line-height: 1.75; color: var(--text-muted); font-family: var(--sans); font-weight: 300; }
+  .upcoming-note { font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: 40px; text-align: center; }
+
+  /* ── PAST LITTERS ── */
+  .litters { background: var(--brown-deep); color: var(--warm-white); }
+  .litters .section-label { color: var(--gold); }
+  .litters .section-title { color: var(--warm-white); }
+  .litters .section-body { color: rgba(255,255,255,0.6); }
+  .litters-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 56px;
+  }
+  .is-hidden { display: none !important; }
+  .nav-logo, .nav-links a { white-space: nowrap; }
+  @media (max-width: 1180px) {
+    .nav-links { gap: 22px; }
+    nav { padding-left: 40px !important; padding-right: 40px !important; }
+  }
+  @media (max-width: 1100px) { .nav-cta { display: none; } }
+  @media (max-width: 900px) {
+    .pairs-grid { grid-template-columns: 1fr; }
+    .litters-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .litters-grid { grid-template-columns: 1fr; }
+    .pair-parent figcaption { font-size: 18px; padding: 28px 12px 12px; }
+  }
+
   /* ── PROCESS ── */
   .process { background: var(--warm-white); }
   .process-steps {
@@ -590,6 +675,8 @@
     <li><a href="#breeds">Breeds</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#available">Available</a></li>
+    <li class="is-hidden" data-section="upcoming"><a href="#upcoming">Upcoming</a></li>
+    <li class="is-hidden" data-section="litters"><a href="#litters">Litters</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#terms">T&amp;Cs</a></li>
@@ -700,6 +787,29 @@
     <div style="text-align:center; margin-top: 48px;">
       <a href="#contact" class="btn-primary" style="display:inline-block;">Enquire About a Puppy</a>
     </div>
+  </div>
+</section>
+
+<!-- UPCOMING PAIRINGS (hidden until the CMS list has entries) -->
+<section class="upcoming is-hidden" id="upcoming" data-section="upcoming">
+  <div class="container">
+    <p class="section-label reveal">Planning Ahead</p>
+    <h2 class="section-title reveal">Upcoming<br><em>Pairings</em></h2>
+    <p class="section-body reveal">Thinking ahead? Meet the parents of our next planned litters so you can see what their puppies might grow up to look like. Every litter is different, so treat this as a guide, not a guarantee.</p>
+    <div class="pairs-grid" id="cms-pairs-grid"></div>
+    <div style="text-align:center; margin-top: 48px;">
+      <a href="#contact" class="btn-primary" style="display:inline-block;">Ask About Reserving</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAST LITTERS (hidden until the CMS list has entries) -->
+<section class="litters is-hidden" id="litters" data-section="litters">
+  <div class="container">
+    <p class="section-label reveal">Previous Litters</p>
+    <h2 class="section-title reveal">Puppies We've<br><em>Raised</em></h2>
+    <p class="section-body reveal">A look back at some of our past litters, each raised with love in our home.</p>
+    <div class="litters-grid" id="cms-litters-grid"></div>
   </div>
 </section>
 
@@ -1003,6 +1113,8 @@
     <div class="footer-links">
       <a href="#breeds">Breeds</a>
       <a href="#available">Available</a>
+      <a href="#upcoming" class="is-hidden" data-section="upcoming">Upcoming</a>
+      <a href="#litters" class="is-hidden" data-section="litters">Past Litters</a>
       <a href="https://www.instagram.com/lumine_kennels/" target="_blank">Instagram</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1145,6 +1257,53 @@
           </div>
         </div>
       `).join('');
+    }).catch(() => {});
+
+    // Upcoming pairings + past litters (sections stay hidden until they have entries)
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const showSection = id => document.querySelectorAll('[data-section="' + id + '"]').forEach(el => el.classList.remove('is-hidden'));
+    const photo = (src, alt) => src ? '<img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy">' : '🐾';
+
+    fetch('/_data/planned.json').then(r => r.json()).then(d => {
+      const grid = document.getElementById('cms-pairs-grid');
+      if (!grid || !d.list || !d.list.length) return;
+      const tagMap = { 'Planned': 't-planned', 'Expecting': 't-expecting', 'Reservations Open': 't-open' };
+      grid.innerHTML = d.list.map(p => `
+        <div class="pair-card">
+          <div class="pair-photos">
+            <figure class="pair-parent">${photo(p.mum_image, p.mum_name || 'Mum')}<figcaption><span>Mum</span>${esc(p.mum_name)}</figcaption></figure>
+            <figure class="pair-parent">${photo(p.dad_image, p.dad_name || 'Dad')}<figcaption><span>Dad</span>${esc(p.dad_name)}</figcaption></figure>
+            <span class="pair-x" aria-hidden="true">×</span>
+          </div>
+          <div class="pair-info">
+            <div class="pair-top">
+              <span class="pair-breed">${esc(p.breed)}</span>
+              <span class="pair-tag ${tagMap[p.status] || 't-planned'}">${esc(p.status || 'Planned')}</span>
+            </div>
+            <p class="pair-names">${esc(p.mum_name)} &amp; ${esc(p.dad_name)}</p>
+            ${p.expected ? '<p class="pair-expected">Expected ' + esc(p.expected) + '</p>' : ''}
+            ${p.description ? '<p class="pair-desc">' + esc(p.description) + '</p>' : ''}
+          </div>
+        </div>
+      `).join('');
+      showSection('upcoming');
+    }).catch(() => {});
+
+    fetch('/_data/litters.json').then(r => r.json()).then(d => {
+      const grid = document.getElementById('cms-litters-grid');
+      if (!grid || !d.list || !d.list.length) return;
+      grid.innerHTML = d.list.map(l => `
+        <div class="pup-card">
+          <div class="pup-photo">${photo(l.image, l.name || 'Litter')}</div>
+          <div class="pup-info">
+            <p class="pup-breed">${esc(l.breed)}</p>
+            <p class="pup-name">${esc(l.name)}</p>
+            ${l.description ? '<p class="pup-desc">' + esc(l.description) + '</p>' : ''}
+            ${l.born ? '<span class="pup-tag tag-upcoming">Born ' + esc(l.born) + '</span>' : ''}
+          </div>
+        </div>
+      `).join('');
+      showSection('litters');
     }).catch(() => {});
   }
 

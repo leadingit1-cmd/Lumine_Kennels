@@ -70,3 +70,34 @@ collections:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Status", name: "status", widget: "select", options: ["Available Now", "Reserved", "Coming Soon"] }
               - { label: "Price (optional)", name: "price", widget: "string", required: false }
+
+      - name: "planned"
+        label: "Upcoming Pairings"
+        file: "_data/planned.json"
+        fields:
+          - label: "Pairings"
+            name: "list"
+            widget: "list"
+            fields:
+              - { label: "Breed", name: "breed", widget: "select", options: ["Dachshund — Shorthair", "Dachshund — Longhair", "English Bulldog"] }
+              - { label: "Mum's Name", name: "mum_name", widget: "string" }
+              - { label: "Mum's Photo", name: "mum_image", widget: "image", required: false, hint: "Portrait or square photo. Keep under 500 KB." }
+              - { label: "Dad's Name", name: "dad_name", widget: "string" }
+              - { label: "Dad's Photo", name: "dad_image", widget: "image", required: false, hint: "Portrait or square photo. Keep under 500 KB." }
+              - { label: "Expected (e.g. March 2027)", name: "expected", widget: "string", required: false }
+              - { label: "Status", name: "status", widget: "select", options: ["Planned", "Expecting", "Reservations Open"], default: "Planned" }
+              - { label: "Description (optional)", name: "description", widget: "text", required: false }
+
+      - name: "litters"
+        label: "Previous Litters"
+        file: "_data/litters.json"
+        fields:
+          - label: "Litters"
+            name: "list"
+            widget: "list"
+            fields:
+              - { label: "Litter Name (e.g. Hazel's Litter)", name: "name", widget: "string" }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Square photos work best. Keep under 500 KB." }
+              - { label: "Breed", name: "breed", widget: "select", options: ["Dachshund — Shorthair", "Dachshund — Longhair", "English Bulldog"] }
+              - { label: "Born (e.g. March 2026)", name: "born", widget: "string", required: false }
+              - { label: "Description (optional)", name: "description", widget: "text", required: false }
