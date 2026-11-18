@@ -18,13 +18,13 @@
       "image": "/images/meet-maverick_-rustic-dachshund-puppy-announcement.png",
       "name": "Maverick",
       "breed": "Dachshund — Shorthair",
-      "status": "Available Now",
+      "status": "Reserved",
       "description": "Meet this handsome boy... "
     },
     {
       "image": "/images/meet-rolo_-cozy-dachshund-announcement.png",
       "breed": "Dachshund — Shorthair",
-      "status": "Available Now",
+      "status": "Reserved",
       "name": "Rolo",
       "description": "Meet this beautiful boy.."
     },
@@ -32,7 +32,7 @@
       "image": "/images/rustic-bruno-dachshund-announcement.png",
       "name": "Bruno",
       "breed": "Dachshund — Shorthair",
-      "status": "Available Now",
+      "status": "Reserved",
       "description": "Meet this handsome little guy..."
     }
   ]
