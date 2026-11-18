@@ -22,7 +22,6 @@ collections:
           - { label: "Address / Location", name: "address", widget: "string", default: "South Africa" }
           - { label: "Phone / WhatsApp", name: "phone", widget: "string", default: "" }
           - { label: "Email Address", name: "email", widget: "string", default: "tippybarnardt@gmail.com" }
-          - { label: "Instagram Handle (without @)", name: "instagram", widget: "string", default: "lumine_kennels" }
 
       - name: "stats"
         label: "About Section Stats"

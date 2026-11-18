@@ -561,27 +561,6 @@
   }
   .form-submit:hover { background: var(--brown-mid); transform: translateY(-1px); }
 
-  /* ── INSTAGRAM ── */
-  .instagram { background: var(--warm-white); padding: 80px 0; }
-  .instagram-grid {
-    display: grid; grid-template-columns: repeat(6, 1fr);
-    gap: 4px; margin-top: 48px;
-  }
-  .ig-cell {
-    aspect-ratio: 1;
-    background: var(--blush);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; overflow: hidden;
-    position: relative; cursor: pointer;
-  }
-  .ig-cell::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: rgba(59, 36, 20, 0.0);
-    transition: background 0.3s;
-  }
-  .ig-cell:hover::after { background: rgba(59, 36, 20, 0.35); }
-  .ig-cell img { width: 100%; height: 100%; object-fit: cover; }
 
   /* ── FOOTER ── */
   footer {
@@ -640,7 +619,6 @@
     .process-steps::before { display: none; }
     .testimonials-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .instagram-grid { grid-template-columns: repeat(3, 1fr); }
     .footer-inner { flex-direction: column; align-items: flex-start; }
   }
 
@@ -822,7 +800,7 @@
       <div class="process-step">
         <div class="step-num-circle">1</div>
         <h3 class="step-title">Get in Touch</h3>
-        <p class="step-desc">Fill in our enquiry form or message us on Instagram. Tell us what you're looking for and a bit about your home.</p>
+        <p class="step-desc">Fill in our enquiry form or message us on WhatsApp. Tell us what you're looking for and a bit about your home.</p>
       </div>
       <div class="process-step">
         <div class="step-num-circle">2</div>
@@ -933,26 +911,6 @@
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="instagram">
-  <div class="container">
-    <p class="section-label reveal">Follow Along</p>
-    <h2 class="section-title reveal">@<span id="cms-ig-handle">lumine_kennels</span><br><em>on Instagram</em></h2>
-    <div class="instagram-grid reveal">
-      <div class="ig-cell">🐾</div>
-      <div class="ig-cell">🐕</div>
-      <div class="ig-cell">🐶</div>
-      <div class="ig-cell">🐾</div>
-      <div class="ig-cell">🐕</div>
-      <div class="ig-cell">🐶</div>
-    </div>
-    <div style="text-align:center; margin-top:32px;">
-      <a href="https://www.instagram.com/lumine_kennels/" target="_blank" class="btn-primary" style="display:inline-block; margin-right:12px;">Follow on Instagram</a>
-      <a href="https://www.facebook.com/people/Lumine-Kennels/100081922898095/" target="_blank" class="btn-primary" style="display:inline-block; background:var(--brown-mid);">Follow on Facebook</a>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
@@ -961,13 +919,6 @@
     <div class="contact-grid reveal">
       <div class="contact-info">
         <p class="section-body">Ready to find your perfect puppy? Fill in the form and we'll get back to you within 24 hours. We're always happy to answer any questions.</p>
-        <div class="contact-item">
-          <div class="contact-icon">📸</div>
-          <div>
-            <p class="contact-label">Instagram</p>
-            <p class="contact-value" id="cms-instagram"><a href="https://www.instagram.com/lumine_kennels/" target="_blank" style="color:inherit;text-decoration:none;">@lumine_kennels</a></p>
-          </div>
-        </div>
         <div class="contact-item">
           <div class="contact-icon">👍</div>
           <div>
@@ -1115,7 +1066,7 @@
       <a href="#available">Available</a>
       <a href="#upcoming" class="is-hidden" data-section="upcoming">Upcoming</a>
       <a href="#litters" class="is-hidden" data-section="litters">Past Litters</a>
-      <a href="https://www.instagram.com/lumine_kennels/" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/people/Lumine-Kennels/100081922898095/" target="_blank">Facebook</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -1150,7 +1101,7 @@
         form.reset();
         setTimeout(() => document.getElementById('form-success').style.display = 'none', 6000);
       })
-      .catch(() => alert('Something went wrong. Please message us on Instagram.'));
+      .catch(() => alert('Something went wrong. Please WhatsApp or email us instead.'));
   }
 
   // Nav shrink on scroll
@@ -1182,14 +1133,7 @@
       setText('cms-about', d.about);
       setText('cms-address', d.address);
       setText('cms-footer-address', d.address);
-      setText('cms-phone', d.phone || 'Contact us on Instagram');
-      if (d.instagram) {
-        setText('cms-instagram', '@' + d.instagram);
-        setText('cms-ig-handle', d.instagram);
-        document.querySelectorAll('a[href*="instagram.com/lumine_kennels"]').forEach(el => {
-          el.href = 'https://www.instagram.com/' + d.instagram + '/';
-        });
-      }
+      setText('cms-phone', d.phone);
       if (d.facebook) {
         const fbEl = document.getElementById('cms-facebook');
         if (fbEl) {
@@ -1242,7 +1186,7 @@
       const grid = document.getElementById('cms-puppies-grid');
       if (!grid) return;
       if (!d.list || !d.list.length) {
-        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;"><p style="font-family:var(--serif);font-size:24px;color:rgba(255,255,255,0.5);font-style:italic;">No puppies available right now.</p><p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:8px;font-family:var(--sans);">Follow us on Instagram to be notified when our next litter arrives.</p></div>';
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;"><p style="font-family:var(--serif);font-size:24px;color:rgba(255,255,255,0.5);font-style:italic;">No puppies available right now.</p><p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:8px;font-family:var(--sans);">Contact us to be notified when our next litter arrives.</p></div>';
         return;
       }
       const statusMap = { 'Available Now': 'tag-available', 'Reserved': 'tag-reserved', 'Coming Soon': 'tag-upcoming' };
