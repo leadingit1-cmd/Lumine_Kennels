@@ -1176,7 +1176,7 @@
       const grid = document.getElementById('cms-puppies-grid');
       if (!grid) return;
       if (!d.list || !d.list.length) {
-        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;"><p style="font-family:var(--serif);font-size:24px;color:rgba(255,255,255,0.5);font-style:italic;">No puppies available right now.</p><p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:8px;font-family:var(--sans);">Contact us to be notified when our next litter arrives.</p></div>';
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px 0;"><p style="font-family:var(--serif);font-size:24px;color:rgba(255,255,255,0.5);font-style:italic;">No puppies available right now.</p><p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:8px;font-family:var(--sans);">Message us on <a href="https://wa.me/27721692316" target="_blank" style="color:var(--gold);text-decoration:none;">WhatsApp</a> or follow us on <a href="https://www.facebook.com/people/Lumine-Kennels/100081922898095/" target="_blank" style="color:var(--gold);text-decoration:none;">Facebook</a> to be notified when our next litter arrives.</p></div>';
         return;
       }
       const statusMap = { 'Available Now': 'tag-available', 'Reserved': 'tag-reserved', 'Coming Soon': 'tag-upcoming' };
