@@ -920,14 +920,14 @@
           <div class="contact-icon">📞</div>
           <div>
             <p class="contact-label">Phone / WhatsApp</p>
-            <p class="contact-value" id="cms-phone">0721692316</p>
+            <p class="contact-value"><a id="cms-phone" href="https://wa.me/27721692316" target="_blank" style="color:inherit;text-decoration:none;">0721692316</a></p>
           </div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">📍</div>
           <div>
             <p class="contact-label">Location</p>
-            <p class="contact-value" id="cms-address">10 Buitenkant St, Heidelberg WC, 6665</p>
+            <p class="contact-value"><a id="cms-address" href="https://www.google.com/maps/search/?api=1&amp;query=10+Buitenkant+St,+Heidelberg+WC,+6665" target="_blank" style="color:inherit;text-decoration:none;">10 Buitenkant St, Heidelberg WC, 6665</a></p>
           </div>
         </div>
         <div class="contact-item">
@@ -1124,6 +1124,18 @@
       setText('cms-address', d.address);
       setText('cms-footer-address', d.address);
       setText('cms-phone', d.phone);
+      if (d.phone) {
+        const digits = d.phone.replace(/\D/g, '');
+        const intl = digits.startsWith('0') ? '27' + digits.slice(1) : digits;
+        const pl = document.getElementById('cms-phone');
+        if (pl) pl.href = 'https://wa.me/' + intl;
+      }
+      if (d.address) {
+        const q = encodeURIComponent(d.address);
+        const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + q;
+        const al = document.getElementById('cms-address');
+        if (al) al.href = mapUrl;
+      }
       if (d.facebook) {
         const fbEl = document.getElementById('cms-facebook');
         if (fbEl) {
